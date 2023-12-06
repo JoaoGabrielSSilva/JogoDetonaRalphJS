@@ -7,6 +7,7 @@ const state = {
     },
     values: {
         timerId: null;
+        gameVelocity: 1000
     },
 };
 
@@ -22,7 +23,7 @@ function randomSquare(){
 }
 
 function moveEnemy(){
-    state.values.timerId = setInterval(randomSquare, 1000);
+    state.values.timerId = setInterval(randomSquare, state.values.gameVelocity);
 }
 
 function addListenerHitbox(){
