@@ -6,7 +6,7 @@ const state = {
         score: document.querySelector("#score")
     },
     values: {
-
+        timerId: null;
     },
 };
 
@@ -19,6 +19,10 @@ function randomSquare(){
     let randomSquare = state.view.squares[randomNumber];
 
     randomSquare.classList.add("enemy");
+}
+
+function moveEnemy(){
+    state.values.timerId = setInterval(randomSquare, 1000);
 }
 
 function addListenerHitbox(){
