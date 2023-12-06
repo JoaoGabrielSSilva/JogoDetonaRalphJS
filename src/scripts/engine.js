@@ -1,5 +1,5 @@
 const state = {
-    view:{
+    view: {
         squares: document.querySelectorAll(".square"),
         enemy: document.querySelector(".enemy"),
         timeLeft: document.querySelector("#time-left"),
@@ -29,8 +29,8 @@ function countDown(){
 }
 
 function playSound(){
-    let audio = new Audio("./src/audios/${audioname}.m4a");
-    audio.volume - 0.2;
+    let audio = new Audio(`./src/audios/${audioname}.m4a`);
+    audio.volume = 0.2;
     audio.play();
 }
 
