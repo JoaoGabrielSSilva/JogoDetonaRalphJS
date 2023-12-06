@@ -6,12 +6,33 @@ const state = {
         score: document.querySelector("#score")
     },
     values: {
-        timerId: null,
         gameVelocity: 1000,
         hitPosition: 0,
         result: 0,
+        currentTime: 60,
     },
+    actions: {
+        timerId: setInterval(randomSquare, 1000),
+        countDownTimerId: setInterval(countDown, 1000),
+    }
 };
+
+function countDown(){
+    state.values.currentTime--;
+    state.view.timeLeft.textContent = state.values.currentTime;
+
+    if(state.values.currentTime <= 0){
+        clearInterval(state.actions.countDownTimerId);
+        clearInterval(state.actions.timerId);
+        alert("Fim de Jogo! Sua pontuação foi de: " + state.values.result);
+    }
+}
+
+function playSound(){
+    let audio = new Audio("./src/audios/hut.m4a");
+    audio.volume - 0.2;
+    audio.play();
+}
 
 function randomSquare(){
     state.view.squares.forEach((square) => {
@@ -25,9 +46,7 @@ function randomSquare(){
     state.values.hitPosition = randomSquare.id;
 }
 
-function moveEnemy(){
-    state.values.timerId = setInterval(randomSquare, state.values.gameVelocity);
-}
+
 
 function addListenerHitbox(){
     state.view.squares.forEach((square) => {
@@ -36,16 +55,14 @@ function addListenerHitbox(){
                 state.values.result++;
                 state.view.score.textContent = state.values.result;
                 state.values.hitPosition = null;
+                playSound();
             }
         });
     });
 }
 
 function main(){
-    randomSquare();
     addListenerHitbox();
 }
 
-
 main();
-//Parei na aula Implementando Actions
