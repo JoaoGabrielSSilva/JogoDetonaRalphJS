@@ -1,1 +1,5 @@
-alert("Funcionou");
+const state = {
+    view:{
+        
+    }
+}
