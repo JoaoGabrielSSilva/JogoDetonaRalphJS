@@ -29,6 +29,7 @@ function countDown(){
         alert("Fim de Jogo! Sua pontuação foi de: " + state.values.result);
     }
     else if(state.values.lifes <= 0){
+        
         clearInterval(state.actions.countDownTimerId);
         clearInterval(state.actions.timerId);
         alert("Fim de Jogo! Sua pontuação foi de: " + state.values.result);
@@ -68,6 +69,7 @@ function addListenerHitbox(){
                 state.values.lifes--;
                 state.view.life = state.values.lifes;
                 state.values.hitPosition = null;
+                console.log(state.values.lifes);
             }
         });
     });
